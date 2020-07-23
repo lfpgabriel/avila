@@ -1,0 +1,65 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    
+  </head>
+  <body>
+    <div>
+    <label>Select Numbers os Days you wanna see</label>
+    <select id="days">
+       <option>5</option>
+       <option>10</option>
+       <option>15</option>
+       <option>20</option>
+       <option>30</option>
+    </select>
+    
+    </div>
+    <div id="chart" style="width: 800px; height: 500px;"></div>
+    
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(getData);
+      
+      var covidData;
+      
+      function getData(){
+      google.script.run.withSuccessHandler(setDataForChart).getCovidData();
+      }
+      
+      function setDataForChart(dataReturned){
+        covidData = dataReturned.slice();
+        drawChart(covidData,5);
+      }
+      
+      function reloadChartForDifferentDays(){
+        var days = document.getElementById('days').value;
+        var intDays = parseInt(days);
+        drawChart(covidData,intDays);
+      }
+
+      function drawChart(dataReturned,days) {
+        
+        var dataForChart = dataReturned.slice(0 - days);
+        dataForChart.unshift(["Date","Tests","Cases","Deaths"]);
+        
+        var data = google.visualization.arrayToDataTable(dataForChart);
+
+        var options = {
+          chart: {
+            title: 'COVID Data',
+            subtitle: 'Tests, Cases, Deaths: 2014-2017',
+          }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('chart'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+      
+      document.getElementById('days').addEventListener("change",reloadChartForDifferentDays);
+      
+    </script>
+    
+  </body>
+</html>

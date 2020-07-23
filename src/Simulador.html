@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="Simulador-css.html">
+  </head>
+  <body>
+      <div class = "container">
+      
+      <!--ESCOLHA O EMPREENDIMENTO, QUADRA E LOTE-->
+      <p class="key" aligne="center">ESCOLHA O EMPREENDIMENTO, QUADRA E LOTE.</p>
+      
+      <div class = "row">
+        <select name="Level1" id="Level1"></select>
+        <select name="Level2" id="Level2"></select>
+        <select name="Level3" id="Level3"></select>
+      </div><!--FINAL DA LINHA -->
+      
+      <!--VALORES DO LOTE-->
+      <div class="row">
+          <p class="key" aligne= "center">VALORES DO LOTE<p>
+          
+          <div class="input-field col s3">
+          <i class="material-icons prefix wineColor">attach_money</i>
+          <input disabled id="valvista" type="text" class="validate">
+          <label class ="active" for="valvista">Valor À Vista</label>
+          </div>
+          
+          <div class="input-field col s3">
+          <i class="material-icons prefix wineColor">credit_card</i>
+          <input disabled id="valprazo" type="text" class="validate">
+          <label class ="active" for="valprazo">Valor À Prazo</label>
+          </div>
+          
+          <div class="input-field col s3">
+          <i class="material-icons prefix wineColor">keyboard_capslock</i>
+          <input disabled id="valent" type="text" class="validate">
+          <label class ="active" for="valent">Valor Entrada Mínimo</label>
+          </div>
+          
+          <div class="input-field col s3">
+          <i class="material-icons prefix wineColor">event</i>
+          <input disabled id="valpar" type="text" class="validate">
+          <label class ="active" for="valpar">Valor Parcela Mínimo</label>
+          <label></label>
+          </div>
+      </div><!--FINAL DA LINHA -->
+      
+      <hr>
+      
+      <!--INSIRA OS VALORES DA PROPOSTA-->
+      <div class="row">
+          <p class="key" aligne="center">INSIRA OS VALORES DA PROPOSTA<p>
+          
+          <div class="input-field col s3">
+          <i class="material-icons prefix wineColor">keyboard_arrow_right</i>
+          <input id="ivalvista" value="0" type="number" min="" class="validate">
+          <label class ="active" for="ivalvista">Valor À Vista</label>
+          </div>
+          
+          <div class="input-field col s3">
+          <i class="material-icons prefix wineColor">keyboard_arrow_right</i>
+          <input id="ivalent" value="0" type="number" min ="" class="validate">
+          <label class ="active" for="ivalent">Valor Entrada</label>
+          </div>
+          
+          <div class="input-field col s3">
+          <i class="material-icons prefix wineColor">keyboard_arrow_right</i>
+          <input id="ivalpar" value="0" type="number" min="0" class="validate">
+          <label class ="active" for="ivalpar">Valor Parcela</label>
+          </div>
+          
+          <div class="input-field col s3">
+          <i class="material-icons prefix wineColor">keyboard_arrow_right</i>
+          <input id="iqtdpar" value="0" type="number" min ="0" max="72" class="validate">
+          <label class ="active" for="iqtdpar">Quantidade de Parcelas</label>
+          </div>
+          
+      </div><!--FINAL DA LINHA -->
+      
+       <!--ESCOLHA O FORMATO DA PROPOSTA-->
+      <div class="row">
+          <p class="key" aligne="center">ESCOLHA O FORMATO DA PROPOSTA</p>  
+          <div class="input-field col s12">
+               <select id = "itipoproposta">
+                <optgroup label="Pagamento Único">
+                  <option disabled value="4">SELECIONE MODELO DA PROPOSTA</option>
+                  <option value="1">À VISTA</option>
+                 </optgroup>
+                 <optgroup label="Financiamento">
+                  <option value="2">À PRAZO COM VALOR DAR PARCELAS DEFINIDO</option>
+                   <option value="3">À PRAZO COM QUANTIDADE DE PARCELAS DEFINIDA</option>
+                 </optgroup>
+               </select>
+          </div>
+          
+      </div><!--FINAL DA LINHA -->
+      
+       <!--DADOS DA PROPOSTA-->
+      <div class="row">
+          <p class="key" aligne="center">DADOS DA PROPOSTA</p>  
+          
+          <div class="row">
+              <div class="input-field col s3">
+                  <input disabled value="0" id="valvistac" type="text" class="validate">
+                  <label class ="active" for="valvistac">Valor à Vista</label>
+              </div>
+              <div class="input-field col s3">
+                  <input disabled value="0" id="valprazoc" type="text" class="validate">
+                  <label class ="active" for="valprazoc">Valor à Prazo</label>
+              </div>
+              <div class="input-field col s3">
+                  <input disabled value="0" id="valentc" type="text" class="validate">
+                  <label class ="active" for="valentc">Valor Entrada</label>
+              </div>
+              <div class="input-field col s3">
+                  <input disabled value="0" id="saldofinc" type="text" class="validate">
+                  <label class ="active" for="saldofinc">Saldo Financiado</label>
+              </div>
+           </div><!--FINAL DA LINHA-->
+           <div class="row">
+              <div class="input-field col s3">
+                  <input disabled value="" id="jac" type="text" class="validate">
+                  <label class ="active" for="jac">Juros Anual</label>
+              </div>
+              <div class="input-field col s3">
+                  <input disabled value="" id="jmc" type="text" class="validate">
+                  <label class ="active" for="jmc">Juros Mensal</label>
+              </div>
+              <div class="input-field col s3">
+                  <input disabled value="" id="valparc" type="text" class="validate">
+                  <label class ="active" for="valparc">Valor Parcela</label>
+              </div>
+              <div class="input-field col s3">
+                  <input disabled value="" id="qtdparc" type="text" class="validate">
+                  <label class ="active" for="qtdparc">Quantidade de Parcelas</label>
+              </div>
+          </div><!--FINAL DA LINHA -->
+     
+      
+        
+    </div><!--FINAL DO CONTAINER -->
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <?!=include("Simulador-js");?>
+  </body>
+</html>
+
+

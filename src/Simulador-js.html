@@ -1,0 +1,91 @@
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems);
+    google.script.run.getEmpQuaLotRow();
+  });
+
+   //Inserir quando Escolher Empreendimento quadra ou lote
+   document.getElementById("emp").addEventListener("change",changeQuaList)
+   document.getElementById("qua").addEventListener("change",inserir)
+   document.getElementById("lot").addEventListener("change",inserir)
+   document.getElementById("ivalvista").addEventListener("change",inserir)
+   document.getElementById("ivalent").addEventListener("change", inserir)
+   document.getElementById("ivalpar").addEventListener("change",inserir)
+   document.getElementById("iqtdpar").addEventListener("change",inserir)
+   document.getElementById("itipoproposta").addEventListener("change",inserir)
+   document.getElementById("car").addEventListener("change",myFunction)
+   
+   
+   function setEmp(){
+   var proposta = {};
+      proposta.row = document.getElementById("row").value;
+      proposta.emp = document.getElementById("emp").value;
+      proposta.qua = document.getElementById("qua").value;
+      proposta.lot = document.getElementById("lot").value;
+      proposta.ivalvista = document.getElementById("ivalvista").value;
+      proposta.ivalent = document.getElementById("ivalent").value;
+      proposta.ivalpar = document.getElementById("ivalpar").value;
+      proposta.iqtdpar = document.getElementById("iqtdpar").value;
+      proposta.itipoproposta = document.getElementById("itipoproposta").value;
+      google.script.run.withSuccessHandler(getQuadras).salvaEmp(proposta);
+   }
+   
+   function getQuadras(){
+     var empz = document.getElementById("emp").value;
+     google.script.run.withSuccessHandler(updateQuadras).getQuas(empz)
+   }
+   
+   function updateQuadras(valsz){   
+   document.getElementById("quadra").value = document.getElementById("emp").value;
+   M.updateTextFields()     
+   }
+   
+   function inserir(){
+    var proposta = {};
+      proposta.row = document.getElementById("row").value;
+      proposta.emp = document.getElementById("emp").value;
+      proposta.qua = document.getElementById("qua").value;
+      proposta.lot = document.getElementById("lot").value;
+      proposta.ivalvista = document.getElementById("ivalvista").value;
+      proposta.ivalent = document.getElementById("ivalent").value;
+      proposta.ivalpar = document.getElementById("ivalpar").value;
+      proposta.iqtdpar = document.getElementById("iqtdpar").value;
+      proposta.itipoproposta = document.getElementById("itipoproposta").value;
+      google.script.run.withSuccessHandler(getValores).salvaProposta(proposta);
+   }
+
+   //Busca Valores
+   function getValores(){
+     var row = document.getElementById("row").value;
+     google.script.run.withSuccessHandler(updateValores).getCosts(row)
+   }
+  
+   //Atualiza Valores na Página
+   function updateValores(vals){
+     document.getElementById("valprazo").value = "R$"+vals.valprazo.toFixed(2);
+     document.getElementById("valvista").value = "R$"+vals.valvista.toFixed(2);
+     document.getElementById("valent").value = "R$"+vals.valent.toFixed(2);
+     document.getElementById("valpar").value = "R$"+vals.valpar.toFixed(2);
+     
+     document.getElementById("ivalvista").min = vals.valvista;
+     document.getElementById("ivalent").min = vals.valent;
+     document.getElementById("ivalpar").min = vals.valpar;
+     
+     document.getElementById("valvistac").value = "R$"+vals.valvistac.toFixed(2);
+     document.getElementById("valprazoc").value = "R$"+vals.valprazo.toFixed(2);
+     document.getElementById("valentc").value = "R$"+vals.valentc.toFixed(2);
+     document.getElementById("saldofinc").value = "R$"+vals.saldofinc.toFixed(2);
+     document.getElementById("jac").value = "%"+(vals.jac)*100;
+     document.getElementById("jmc").value = "%"+(vals.jmc)*100;
+     document.getElementById("valparc").value = "R$"+vals.valparc.toFixed(2);
+     document.getElementById("qtdparc").value = vals.qtdparc;
+     //document.getElementById("totalpc").value = vals.totalp.toFixed(2);
+     M.updateTextFields();  
+   }
+   
+
+   
+  
+
+</script>

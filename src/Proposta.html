@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <?!=include("Proposta-css");?>
+  </head>
+  <body>
+    <div class = "container">
+        
+        <div class = "row">
+        <h1>hi</h1>      
+        </div>
+        
+        
+        
+    </div>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <?!=include("Proposta-js");?>
+  </body>
+</html>
+
+
+<select id="qua">
+              <option disabled selected>Escolha a Quadra</option>
+              <? for(var i=0;i<listqua.length;i++){ ?>
+              <option><?= listqua[i]; ?></option>
+              <? } ?>
+  </select>
